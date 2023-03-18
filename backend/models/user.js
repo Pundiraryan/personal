@@ -7,6 +7,7 @@ const careplaceSchema=new mongoose.Schema({
     phone:{type:Number},
     add:{type:String},
     staffsize:{type:Number},
+    foodcount:{type:Number},
     feedback:{type:String}
 })
 const userModel=mongoose.model("hosteldata",careplaceSchema);

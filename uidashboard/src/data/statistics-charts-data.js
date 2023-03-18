@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { chartsConfig } from "@/configs";
 
 // const websiteViewsChart = {
@@ -100,6 +101,9 @@
 
 import axios from "axios";
 
+=======
+import { chartsConfig } from "@/configs";
+>>>>>>> 58dfcce3c0530890ea511ed9fcc9dba7a4ff0aa5
 const websiteViewsChart = {
   type: "bar",
   height: 220,
