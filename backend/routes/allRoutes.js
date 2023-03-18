@@ -3,6 +3,15 @@ import userModel from "../models/user.js";
 // import nodemailer from 'nodemailer';
 import mongodb from 'mongodb';
 const router=express.Router();
+router.get("/careplaceDetails/all",async (req,res)=>{
+    try {
+        const result=await userModel.find();
+        console.log(result);
+        res.send(result);
+    } catch (error) {
+        console.log(error);
+    }
+})
 router.get("/careplaceDetails/:id",async (req,res)=>{
     try {
         console.log(req.params.id);
