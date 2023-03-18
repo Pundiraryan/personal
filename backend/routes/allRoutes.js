@@ -31,45 +31,45 @@ router.delete("/PoolMemberDetails/:id",async (req,res)=>{
         console.log(error)
     }
 })
-router.post("/careplaceDetails/submit",async (req,res)=>{
-    console.log(req.body);
-    const {careplace,supname,supid,pwd,phone,add,staffsize,feedback}=req.body;
-        try {
-            const userExists= await userModel.findOne({supid:supid});
-            if(userExists){
-             return res.status(422).json({error:"user with this phone already exists"})
-            }
-            const user= new userModel(({careplace,supname,supid,pwd,phone,add,staffsize,feedback}));
-            await user.save();
+// router.post("/careplaceDetails/submit",async (req,res)=>{
+//     console.log(req.body);
+//     const {careplace,supname,supid,pwd,phone,add,staffsize,feedback}=req.body;
+//         try {
+//             const userExists= await userModel.findOne({supid:supid});
+//             if(userExists){
+//              return res.status(422).json({error:"user with this phone already exists"})
+//             }
+//             const user= new userModel(({careplace,supname,supid,pwd,phone,add,staffsize,feedback}));
+//             await user.save();
             
-            res.status(201).json({message:"user registered successfully"});
-         } catch (error) {
-             console.log(error.message);
-         }
-    }
-)
-router.get("/contact",(req,res)=>{
-    const {fname,lname,email,message}=req.body;
-    var transporter=nodemailer.createTransport({
-        service:'gmail',
-        auth:{
-            user:'autopoolcorporation@gmail.com',
-            pass:'qtunmiaewxhyqaik'
-        }
+//             res.status(201).json({message:"user registered successfully"});
+//          } catch (error) {
+//              console.log(error.message);
+//          }
+//     }
+// )
+// router.get("/contact",(req,res)=>{
+//     const {fname,lname,email,message}=req.body;
+//     var transporter=nodemailer.createTransport({
+//         service:'gmail',
+//         auth:{
+//             user:'autopoolcorporation@gmail.com',
+//             pass:'qtunmiaewxhyqaik'
+//         }
 
-    })
-    var mailoptions={
-        from:'autopoolcorporation@gmail.com',
-        to:email,
-        subject:'Thanks for your valuable feedback '+ fname,
-        text:'We appreciate your valuable feedback dear'+fname+'and time that you spent . Thank you'
-    }
-    transporter.sendMail(mailoptions,(error,info)=>{
-        if(error){console.log(error);}
-        else{
-            res.send("response submitted successfully");
-            console.log("email sent " +info.response);
-        }
-    })
-})
+//     })
+//     var mailoptions={
+//         from:'autopoolcorporation@gmail.com',
+//         to:email,
+//         subject:'Thanks for your valuable feedback '+ fname,
+//         text:'We appreciate your valuable feedback dear'+fname+'and time that you spent . Thank you'
+//     }
+//     transporter.sendMail(mailoptions,(error,info)=>{
+//         if(error){console.log(error);}
+//         else{
+//             res.send("response submitted successfully");
+//             console.log("email sent " +info.response);
+//         }
+//     })
+// })
 export default router;
