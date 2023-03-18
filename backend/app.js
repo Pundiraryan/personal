@@ -1,8 +1,10 @@
 import express from "express";
 import connectDB from "./db/dbconnector.js";
 import router from "./routes/allRoutes.js";
+import cors from 'cors';
 // import bodyParser from 'bod'
 const app=express();
+app.use(cors());
 app.use(express.json());
 const port = process.env.PORT || "4000";
 const dburl=process.env.dbUrl||"mongodb://localhost:27017";
