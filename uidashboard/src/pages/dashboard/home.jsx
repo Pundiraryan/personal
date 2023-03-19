@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useEffect} from "react";
+import axios from "axios";
 import {
   Typography,
   Card,
@@ -10,9 +11,9 @@ import {
   MenuList,
   MenuItem,
   Avatar,
-  Tooltip,
+  Tooltip, 
   Progress,
-} from "@material-tailwind/react";
+} from "@material-tailwind/react";//
 import {
   ClockIcon,
   CheckIcon,
@@ -29,6 +30,27 @@ import {
 } from "@/data";
 
 export function Home() {
+  async function fetchData() {
+    try {
+      let overall=[];
+      const response = await axios.get("http://localhost:4000/careplaceDetails/all");
+      overall = response.data;
+      const categories = overall.map((data) => data.supid);
+      const staffsize = overall.map((data) => data.staffsize);
+      console.log("from home");
+      console.log(categories);
+      console.log(staffsize);
+      statisticsChartsData[0].chart.options.xaxis.categories=categories;
+      // websiteViewsChart.options.xaxis.categories = categories;
+      statisticsChartsData[0].chart.series[0].data = staffsize;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(()=>{
+    console.log("home");
+    fetchData();
+  },[])
   return (
     <div className="mt-12">
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">

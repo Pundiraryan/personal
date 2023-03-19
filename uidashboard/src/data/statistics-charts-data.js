@@ -105,8 +105,6 @@ import { chartsConfig } from "@/configs";
 
 
 
-
-
 const websiteViewsChart = {
     type: "bar",
     height: 220,
@@ -196,6 +194,7 @@ async function fetchData() {
 }
 
 fetchData();
+
   export const statisticsChartsData = [
     {
       color: "blue",
