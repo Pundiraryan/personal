@@ -8,6 +8,11 @@ const careplaceSchema=new mongoose.Schema({
     add:{type:String},
     staffsize:{type:Number},
     foodcount:{type:Number},
+    fooddesc:{type:String},
+    watercount:{type:Number},
+    waterdesc:{type:String},
+    financecount:{type:Number},
+    financedesc:{type:String},
     feedback:{type:String}
 })
 const userModel=mongoose.model("hosteldata",careplaceSchema);
